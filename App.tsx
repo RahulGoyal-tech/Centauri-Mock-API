@@ -15,7 +15,7 @@ const App: React.FC<{}> = () => {
         let data = Math.floor(Math.random() * (7 - 0 + 1) + 0);
         setDisplay('Data: ' + String(data));
         setBdColor('green');
-      }, 2000);
+      }, 1500);
     }
   }
 
