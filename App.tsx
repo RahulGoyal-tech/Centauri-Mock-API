@@ -4,6 +4,21 @@ import { Text, View, StyleSheet, Pressable } from 'react-native';
 const App: React.FC<{}> = () => {
   const [display, setDisplay] = useState<string>('Click a Button');
   const [bdColor, setBdColor] = useState<string>('green');
+
+  const handleClick = () => {
+    if (display == 'Loading..') {
+      console.error('Error, request in process');
+      setBdColor('red');
+    } else {
+      setDisplay('Loading..');
+      setTimeout(function () {
+        let data = Math.floor(Math.random() * (7 - 0 + 1) + 0);
+        setDisplay('Data: ' + String(data));
+        setBdColor('green');
+      }, 2000);
+    }
+  }
+
   return (
     <View>
       <View style={{ flex: 1, margin: 50 }}></View>
@@ -21,60 +36,31 @@ const App: React.FC<{}> = () => {
         }}>
         {display}
       </Text>
+
       <View style={{ flexDirection: 'row', marginLeft: 50, marginRight: 50 }}>
+
         <Pressable
           style={styles.button}
-          onPress={() => {
-            if (display == 'Loading..') {
-              console.log('Error, request in process');
-              setBdColor('red');
-            } else {
-              setDisplay('Loading..');
-              setTimeout(function () {
-                let data = Math.floor(Math.random() * (7 - 0 + 1) + 0);
-                setDisplay('Data: ' + String(data));
-                setBdColor('green');
-              }, 2000);
-            }
-          }}>
+          onPress={handleClick}>
           <Text style={styles.button}>CLICK1</Text>
         </Pressable>
+
         <View style={styles.spaceBox}></View>
+
         <Pressable
           style={styles.button}
-          onPress={() => {
-            if (display == 'Loading..') {
-              console.log('Error, request in process');
-              setBdColor('red');
-            } else {
-              setDisplay('Loading..');
-              setTimeout(function () {
-                let data = Math.floor(Math.random() * (7 - 0 + 1) + 0);
-                setDisplay('Data: ' + String(data));
-                setBdColor('green');
-              }, 2000);
-            }
-          }}>
+          onPress={handleClick}>
           <Text style={styles.button}>CLICK2</Text>
         </Pressable>
+
         <View style={styles.spaceBox}></View>
+
         <Pressable
           style={styles.button}
-          onPress={() => {
-            if (display == 'Loading..') {
-              console.log('Error, request in process');
-              setBdColor('red');
-            } else {
-              setDisplay('Loading..');
-              setTimeout(function () {
-                let data = Math.floor(Math.random() * (7 - 0 + 1) + 0);
-                setDisplay('Data: ' + String(data));
-                setBdColor('green');
-              }, 2000);
-            }
-          }}>
+          onPress={handleClick}>
           <Text style={styles.button}>CLICK3</Text>
         </Pressable>
+
       </View>
     </View>
   );
