@@ -11,11 +11,13 @@ const App: React.FC<{}> = () => {
       setBdColor('red');
     } else {
       setDisplay('Loading..');
+      let time = Math.floor(Math.random() * (6000 - 500 + 1) + 500);
+      console.log("Time Alloted: " + String(time));
       setTimeout(function () {
         let data = Math.floor(Math.random() * (7 - 0 + 1) + 0);
         setDisplay('Data: ' + String(data));
         setBdColor('green');
-      }, 1500);
+      }, time);
     }
   }
 
